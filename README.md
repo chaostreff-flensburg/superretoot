@@ -59,7 +59,7 @@ Be aware of the [Mastodon Rate](https://docs.joinmastodon.org/api/rate-limits/) 
 
 ## 🗺️ Real Life Example
 
-[@chaos_social](https://chaos.social/@chaos_fl) (an awesome hackspace from nothern germany) re-toots every toot from users on the list retoot with the hashtag *#ctfl*. For Example this [toot](https://chaos.social/@scammo/109525846343680585). The goal is to make our community members more visible and engage on more content.
+[@chaos_fl](https://chaos.social/@chaos_fl) (an awesome hackspace from nothern germany) re-toots every toot from users on the list retoot with the hashtag *#ctfl*. For Example this [toot](https://chaos.social/@scammo/109525846343680585). The goal is to make our community members more visible and engage on more content.
 
 ## ⚖️ License
 
