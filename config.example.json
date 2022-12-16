@@ -1,0 +1,6 @@
+{
+  "instanceUrl": "YOUR INSTANCE URL (https://mastodon.social)",
+  "ownAccountName": "YOUR ACCOUNT NAME WITHOUT @",
+  "tag": "YOUR TAG TO FILTER ON",
+  "statusesLimit": "2"
+}

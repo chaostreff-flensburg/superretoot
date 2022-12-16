@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "masto": "^4.10.0"
+  }
+}
