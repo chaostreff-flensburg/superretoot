@@ -10,7 +10,7 @@ const main = async () => {
   });
 
   const lists = await masto.lists.fetchAll();
-  const list = lists.find (element => element.title === 'retoot');
+  const list = lists.find (element => element.title === config.listName);
 
   if (!list) {
     console.log('No list for retoot found!');

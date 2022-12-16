@@ -1,6 +1,7 @@
 {
-  "instanceUrl": "YOUR INSTANCE URL (https://mastodon.social)",
+  "instanceUrl": "YOUR INSTANCE URL (e.g. https://mastodon.social)",
   "ownAccountName": "YOUR ACCOUNT NAME WITHOUT @",
+  "listName": "YOUR LIST NAME (e.g. retoot)",
   "tag": "YOUR TAG TO FILTER ON",
   "statusesLimit": "2"
 }
