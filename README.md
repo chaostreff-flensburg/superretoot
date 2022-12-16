@@ -32,7 +32,7 @@ Stores all config information.
 | tag | The tag for filtering | retoot |
 | statusesLimit | Limit on the amount of statuses | 2 |
 
-### .env
+### ⚙️ .env - Mastodon Application Token
 
 Stores the `TOKEN` information. You can generate a `TOKEN` by going to: Settings -> development. Create a new app, you can choose your own name. The app needs to `read` and `write`. After that you will be able to create the Token. Keep this token a secret.
 
