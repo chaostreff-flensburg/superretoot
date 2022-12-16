@@ -1,0 +1,6 @@
+.devcontainer
+.github
+.gitignore
+README.md
+.env.example
+config.example.json
