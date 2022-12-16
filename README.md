@@ -46,6 +46,13 @@ Stores the `TOKEN` information. You can generate a `TOKEN` by going to: Settings
 ```
 */5 * * * * cd /your/path/to/the/repe && docker run -v "$(pwd)"/config.json:/app/config.json:ro -v "$(pwd)"/.env:/app/.env:ro ghcr.io/chaostreff-flensburg/superretoot:latest >/dev/null 2>&1
 ```
+## 🔁 Update
+
+To get a new version of the project just pull the new image.
+```
+docker pull ghcr.io/chaostreff-flensburg/superretoot:latest
+```
+
 
 ## ☠️ Limitations
 
