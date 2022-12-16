@@ -1,4 +1,5 @@
 # 🦣 super RE-toot
+![build](https://github.com/chaostreff-flensburg/superretoot/actions/workflows/build.yml/badge.svg)
 
 ## 🤷 About
 
@@ -25,6 +26,16 @@ The software is written in node.js.
 | listName | Your list Name | reoot |
 | tag | The tag for filtering | retoot |
 | statusesLimit | Limit on the amount of statuses | 2 |
+
+## 🚀 How to install and run
+
+- Git clone thie Repo.
+- Copy the .env.example to .env and change fill in your TOKEN.
+- Copy the config.example.json to config.json and fill in your matching values.
+- Create a cronjob like the following one runs the script every 5 minutes.
+```
+*/5 * * * * cd /your/path/to/the/repe && docker run -v "$(pwd)"/config.json:/app/config.json:ro -v "$(pwd)"/.env:/app/.env:ro ghcr.io/chaostreff-flensburg/superretoot:latest >/dev/null 2>&1
+```
 
 ## ☠️ Limitations
 
