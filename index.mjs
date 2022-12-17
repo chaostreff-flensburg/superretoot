@@ -1,7 +1,7 @@
-import { login } from 'masto';
-import config from './config.json' assert {type: 'json'};
-import * as dotenv from 'dotenv'
-dotenv.config()
+import { login } from "masto";
+import config from "./config.json" assert { type: "json" };
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const main = async () => {
   const masto = await login({
@@ -10,30 +10,43 @@ const main = async () => {
   });
 
   const lists = await masto.lists.fetchAll();
-  const list = lists.find (element => element.title === config.listName);
+  const list = lists.find((element) => element.title === config.listName);
 
   if (!list) {
-    console.log('No list for retoot found!');
+    console.log("No list for retoot found!");
     return;
   }
 
   const accounts = await masto.lists.fetchAccounts(list.id);
-  const accountIds = accounts.value.map(account => account.id);
+  const accountIds = accounts.value.map((account) => account.id);
 
   if (!accountIds) {
-    console.log('No Account Ids found');
+    console.log("No Account Ids found");
     return;
   }
 
-  accountIds.forEach(async accountId => {
-    const toots = await masto.accounts.iterateStatuses(accountId, { excludeReplies: true, limit: config.statusesLimit, tagged: config.tag }).next();
-    toots.value.map(toot => toot.id).forEach( async id => {
-      const retootedby = await masto.statuses.fetchRebloggedBy(id);
-      if (!retootedby.find(element => element.url === `${config.instanceUrl}/@${config.ownAccountName}`)) {
-        await masto.statuses.reblog(id)
-        console.log('Boost successfull!', id);
-      }
-    });
+  accountIds.forEach(async (accountId) => {
+    const toots = await masto.accounts
+      .iterateStatuses(accountId, {
+        excludeReplies: true,
+        limit: config.statusesLimit,
+        tagged: config.tag,
+      })
+      .next();
+    toots.value
+      .map((toot) => toot.id)
+      .forEach(async (id) => {
+        const retootedby = await masto.statuses.fetchRebloggedBy(id);
+        if (
+          !retootedby.find(
+            (element) =>
+              element.url === `${config.instanceUrl}/@${config.ownAccountName}`
+          )
+        ) {
+          await masto.statuses.reblog(id);
+          console.log("Boost successfull!", id);
+        }
+      });
   });
 };
 
