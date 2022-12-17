@@ -7,6 +7,8 @@
 With super RE-toot you can easily automate re-toots/re-blogs from your [Mastodon](https://docs.joinmastodon.org/) account.
 It only retoots, toots from accounts which are in a List and are using a certain hashtag. Both values can be [configured](#config).
 
+![An blue children cartoon elephant doing something similar to a toot](https://media3.giphy.com/media/RJELPcfkKlDVJnhroI/giphy.gif?cid=790b76119e13ac65b397f3656ce375bfa38fca3fcf7ed304&rid=giphy.gif&ct=s)
+
 ## 💻 Techstack
 
 The software is written in node.js.
