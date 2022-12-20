@@ -57,9 +57,17 @@ docker pull ghcr.io/chaostreff-flensburg/superretoot:latest
 
 ## ☠️ Limitations
 
+### Rate Limit
+
 Be aware of the [Mastodon Rate](https://docs.joinmastodon.org/api/rate-limits/) limit!
 
+### Boosted toots
+
 Does not boost boosted toots. If the account in the list has boosted a toot containing the [configured](/#%EF%B8%8F-config) hastag it **won't** be boosted.
+
+### Edited toots
+
+Be aware of edited toots. A boosted toot can be edited including the hashtag. The toot is still boosted even if the hashtag is not [configured](/#%EF%B8%8F-config).
 
 ## 🗺️ Real Life Example
 
