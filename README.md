@@ -5,7 +5,7 @@
 ## 🤷 About
 
 With super RE-toot you can easily automate re-toots/re-blogs from your [Mastodon](https://docs.joinmastodon.org/) account.
-It only retoots, toots from accounts which are in a List and are using a certain hashtag. Both values can be [configured](#config).
+It only retoots, toots from accounts which are in a List and are using a certain hashtag. Both values can be [configured](#%EF%B8%8F-config).
 
 ![An blue children cartoon elephant doing something similar to a toot](https://media3.giphy.com/media/RJELPcfkKlDVJnhroI/giphy.gif?cid=790b76119e13ac65b397f3656ce375bfa38fca3fcf7ed304&rid=giphy.gif&ct=s)
 
@@ -58,6 +58,8 @@ docker pull ghcr.io/chaostreff-flensburg/superretoot:latest
 ## ☠️ Limitations
 
 Be aware of the [Mastodon Rate](https://docs.joinmastodon.org/api/rate-limits/) limit!
+
+Does not boost boosted toots. If the account in the list has boosted a toot containing the [configured](/#%EF%B8%8F-config) hastag it **won't** be boosted.
 
 ## 🗺️ Real Life Example
 
