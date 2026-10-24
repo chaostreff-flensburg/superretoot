@@ -1,15 +1,15 @@
-import { login } from "masto";
-import config from "./config.json" assert { type: "json" };
+import { createRestAPIClient } from "masto";
+import config from "./config.json" with { type: "json" };
 import * as dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const main = async () => {
-  const masto = await login({
+  const masto = createRestAPIClient({
     url: config.instanceUrl,
     accessToken: process.env.TOKEN,
   });
 
-  const lists = await masto.lists.fetchAll();
+  const lists = await masto.v1.lists.list();
   const list = lists.find((element) => element.title === config.listName);
 
   if (!list) {
@@ -17,37 +17,34 @@ const main = async () => {
     return;
   }
 
-  const accounts = await masto.lists.fetchAccounts(list.id);
-  const accountIds = accounts.value.map((account) => account.id);
+  const accounts = await masto.v1.lists.$select(list.id).accounts.list();
+  const accountIds = accounts.map((account) => account.id);
 
-  if (!accountIds) {
+  if (!accountIds.length) {
     console.log("No Account Ids found");
     return;
   }
 
-  accountIds.forEach(async (accountId) => {
-    const toots = await masto.accounts
-      .iterateStatuses(accountId, {
-        excludeReplies: true,
-        limit: config.statusesLimit,
-        tagged: config.tag,
-      })
-      .next();
-    toots.value
-      .map((toot) => toot.id)
-      .forEach(async (id) => {
-        const retootedby = await masto.statuses.fetchRebloggedBy(id);
-        if (
-          !retootedby.find(
-            (element) =>
-              element.url === `${config.instanceUrl}/@${config.ownAccountName}`
-          )
-        ) {
-          await masto.statuses.reblog(id);
-          console.log("Boost successfull!", id);
-        }
-      });
-  });
+  for (const accountId of accountIds) {
+    const toots = await masto.v1.accounts.$select(accountId).statuses.list({
+      excludeReplies: true,
+      limit: config.statusesLimit,
+      tagged: config.tag,
+    });
+
+    for (const id of toots.map((toot) => toot.id)) {
+      const retootedby = await masto.v1.statuses.$select(id).rebloggedBy.list();
+      if (
+        !retootedby.find(
+          (element) =>
+            element.url === `${config.instanceUrl}/@${config.ownAccountName}`
+        )
+      ) {
+        await masto.v1.statuses.$select(id).reblog();
+        console.log("Boost successfull!", id);
+      }
+    }
+  }
 };
 
 main().catch((error) => {

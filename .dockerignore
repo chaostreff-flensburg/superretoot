@@ -4,3 +4,7 @@
 README.md
 .env.example
 config.example.json
+node_modules
+.env
+config.json
+.git

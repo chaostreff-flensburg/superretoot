@@ -11,14 +11,14 @@ It only retoots, toots from accounts which are in a List and are using a certain
 
 ## 💻 Techstack
 
-The software is written in node.js.
+The software is written in node.js (>= 26).
 
 ### 🕸️ Dependencies
 
 | Name | Version |
 | -- | -- |
-| [dotenv](https://www.npmjs.com/package/dotenv) | ^16.0.3 |
-| [masto](https://www.npmjs.com/package/masto) | ^4.10.0|
+| [dotenv](https://www.npmjs.com/package/dotenv) | ^18.0.9 |
+| [masto](https://www.npmjs.com/package/masto) | ^8.0.0 |
 
 ## ✔️ Config
 
